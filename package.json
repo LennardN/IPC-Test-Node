@@ -1,0 +1,18 @@
+{
+  "name": "ipc-test-node",
+  "version": "1.0.0",
+  "description": "test project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Spackor",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "http": "0.0.1-security",
+    "iohook": "^0.6.6",
+    "readline-sync": "^1.4.10",
+    "socket.io": "^2.3.0"
+  }
+}
