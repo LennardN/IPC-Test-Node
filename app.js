@@ -1,15 +1,15 @@
 const io = require("socket.io-client"); //initialisierung von dem package socket.io(client) io ist in/out und so mit die schnittstelle
-const readline = require('readline');
-var rl = readline.createInterface({
+const readline = require('readline'); //initialisierung von readline, von der stadard node.js libary
+var rl = readline.createInterface({ //Eingabe Interface
   input: process.stdin,
   output: process.stdout,
   prompt: ""
 });
 
 
-var socket = io.connect("http://localhost:4000");
+var socket = io.connect("http://localhost:4000"); //Connect Adresse
 
-var msg = {
+var msg = { //Struktur für eine default Nachricht
   name: "default",
   message: "N/A"
 }
@@ -18,13 +18,13 @@ socket.on("welcome", (data) => { //welcome = Event Name, wird aufgerufen wennver
   msg.name = "client" + data.name;
   rl.prompt = msg.name + ": ";
 
-  rl.on('line', function (ans) {
+  rl.on('line', function (ans) { //Eingabe funktion
     msg.message = ans;
     socket.emit("send-msg", msg); //Eingegebene Nachricht wird zum Server übermittelt
   });
 
 
 });
-socket.on("broadcast-msg", msgData => {
+socket.on("broadcast-msg", msgData => { //Wenn Nachricht empfangen wird
     console.log(msgData.name + ": " + msgData.message);
 });
