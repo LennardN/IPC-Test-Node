@@ -3,7 +3,7 @@ const readline = require('readline'); //initialisierung von readline, von der st
 var rl = readline.createInterface({ //Eingabe Interface
   input: process.stdin,
   output: process.stdout,
-  prompt: ""
+  prompt: "" //Eingabe Zeichen
 });
 
 

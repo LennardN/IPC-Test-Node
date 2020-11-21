@@ -1,5 +1,5 @@
 const port = 4000;
-const http = require("http").createServer(); //erstellen eines Servers
+const http = require("http").createServer(); //erstellen eines Servers über http-Protokoll
 const io = require("socket.io")(http); //initialisierung von dem package socket.io(allgemein)
 
 var welcomeMsg = { //Struktur für Welcome Nachricht für jeden User. Zudem zuteilung der Bennenung der clients
@@ -10,7 +10,7 @@ var welcomeMsg = { //Struktur für Welcome Nachricht für jeden User. Zudem zute
 io.on("connect", (socket) => { //connect function wenn Client connected
 
   socket.emit("welcome", welcomeMsg); //senden einer Event nachricht mit dem Titel 'welcome'
-  console.log(`New Client Nr.${welcomeMsg.name} is connected`); //Nachricht wenn Client connected ist
+  console.log(`Neuer Client Nr.${welcomeMsg.name} hat sich verbunden!`); //Nachricht wenn Client connected ist
   welcomeMsg.name++; //zählt die variable für den namen hoch
 
   socket.on("send-msg", msg => { //funktion wird ausgeführt wenn eine Nachricht empfangen wird
@@ -20,5 +20,5 @@ io.on("connect", (socket) => { //connect function wenn Client connected
   });
 });
 http.listen(port, () => { //function wenn der server zum port 4000 connected ist
-  console.log("Server is listening to the port: " + port);
+  console.log("Server kommuniziert über den Port: " + port);
 });
